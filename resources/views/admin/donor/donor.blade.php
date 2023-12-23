@@ -450,6 +450,11 @@
                                                             'placeholder' => 'Enter name']) !!}
                                                         </div>
                                                         <div class="form-group">
+                                                            {!! Form::label('blood_group', 'Blood Group') !!}
+                                                            {!! Form::select('blood_group', ['A+' => 'A+', 'A-' => 'A-', 'B+' => 'B+', 'B-' => 'B-', 'AB+' => 'AB+', 'AB-' => 'AB-', 'O+' => 'O+', 'O-' => 'O-'], null, ['class' => 'form-control select2bs4', 'placeholder' => 'Select Blood Group']) !!}
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
                                                             {!! Form::label('birthday', 'Birthday') !!}
                                                             {!! Form::date('birthday', null, ['class' =>
                                                             'form-control']) !!}
