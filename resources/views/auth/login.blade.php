@@ -95,7 +95,7 @@
       <button type="submit">Login</button><br><br>
 
       <div class="additional-links">
-      <a href="#">Not yet registered?</a>
+      <a href="{{route('register.page')}}">Not yet registered?</a>
       <a href="#">Forgot password?</a>
     </div><br>
     <div>
