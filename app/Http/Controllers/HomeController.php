@@ -31,7 +31,7 @@ class HomeController extends Controller
                 return view('admin.index');
 
             case 2: // donor
-                return view('donor.index');
+                return view('frontend.index');
 
             default:
                 return view('Admin.admin_master');
