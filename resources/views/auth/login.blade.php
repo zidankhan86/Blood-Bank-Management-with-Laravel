@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('https://img.freepik.com/free-vector/school-building-educational-institution-college_107791-1051.jpg'); /* Replace 'your-background-image.jpg' with the path to your image */
+      background-image: url('https://ehealth.eletsonline.com/wp-content/uploads/2014/12/aaaaabloodcell4.jpg'); /* Replace 'your-background-image.jpg' with the path to your image */
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -65,7 +65,11 @@
 <body>
 
   <div class="login-container">
-    <h2>Login</h2>
+  <div class="card" style="background-color: red; padding: 5px; height: 50px;">
+    <h2 style="color: white; margin: 0;">Login</h2>
+</div><br>
+
+
     <form class="login-form" action="{{ route('login') }}" method="post">
         @csrf
       
