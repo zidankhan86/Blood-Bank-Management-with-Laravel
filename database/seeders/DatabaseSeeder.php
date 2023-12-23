@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
 
 
         $users = [
-            ['name' => 'admin', 'email' => 'admin@mail.com', 'password' => Hash::make('password'), 'user_type' => '1'],
-            ['name' => 'donor', 'email' => 'donor@mail.com', 'password' => Hash::make('password'), 'user_type' => '2'],
+            ['name' => 'admin', 'email' => 'admin@mail.com', 'address'=>'uttara', 'password' => Hash::make('password'), 'user_type' => '1'],
+            ['name' => 'donor', 'email' => 'donor@mail.com', 'password' => Hash::make('password'), 'user_type' => '2','address'=>'uttara'],
      
         ];
 
