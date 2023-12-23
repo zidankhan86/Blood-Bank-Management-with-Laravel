@@ -670,9 +670,40 @@ ul.pagination .active a {
 .add-button {
   background: #28a745;
   color: #fff;
+  margin-right: 8px;
   padding: 8px 20px !important;
   display: inline-block;
 }
+
+@media (max-width: 400px) {
+    .add-button {
+      display: inline-block;
+      padding: 6px 45px !important;
+      margin: 5px 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .add-button {
+      display: inline-block;
+      padding: 6px 45px !important;
+      margin: 5px 0;
+    }
+  }
+  @media (max-width: 768px) {
+    .add-button {
+      display: inline-block;
+      padding: 6px 45px !important;
+      margin: 5px 0;
+    }
+  }
+  @media (max-width: 992px) {
+    .add-button {
+      display: inline-block;
+      padding: 6px 45px !important;
+      margin: 5px 0;
+    }
+}
+
 .add-button:hover {
   color: #fff;
 }

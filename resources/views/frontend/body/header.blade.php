@@ -81,7 +81,10 @@
 								<a class="nav-link login-button" href="{{ route('login') }}">Login</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Make a Request</a>
+							</li>
+                            <li class="nav-item">
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Be a Donor</a>
 							</li>
 						</ul>
 					</div>
