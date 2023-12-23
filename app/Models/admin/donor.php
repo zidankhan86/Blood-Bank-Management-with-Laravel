@@ -14,6 +14,7 @@ class donor extends Model
         'gender',
         'address',
         'phone',
+        'blood_group',
         'email',
         'photo',
         'slug',

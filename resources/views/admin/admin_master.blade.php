@@ -137,15 +137,14 @@
 
     <!-- Page specific script -->
     @php
-        $SystemName = 'xyz'
+        $SystemName = 'xyz';
     @endphp
     <script>
         $(function() {
-            var card = $('#example1').closest('.card');
+            var card = $('#example1, #example2, #example3, #example4, #example5').closest('.card');
             var title = card.data('table-title') + ' - ' + '{{ $SystemName }}';
 
-
-            $("#example1").DataTable({
+            $("#example1, #example2, #example3, #example4, #example5").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -166,7 +165,9 @@
                         title: title
                     }
                 ]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo(
+                '#example1_wrapper .col-md-6:eq(0), #example2_wrapper .col-md-6:eq(0), #example3_wrapper .col-md-6:eq(0), #example4_wrapper .col-md-6:eq(0), #example5_wrapper .col-md-6:eq(0)'
+                );
 
             // other DataTables initialization code
         });
@@ -358,7 +359,7 @@
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="{{ URL::asset('../backend/dist/js/demo.js')}}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
- 
+
 
 </body>
 
