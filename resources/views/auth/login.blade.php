@@ -65,8 +65,8 @@
 <body>
 
   <div class="login-container">
-  <div class="card" style="background-color: red; padding: 5px; height: 50px;">
-    <h2 style="color: white; margin: 0;">Login</h2>
+  <div class="card" style="background-color: red; padding: 5px; height: 40px;">
+    <h2 style="color: white; margin: 0;"><b>Login</b> </h2>
 </div><br>
 
 
@@ -100,7 +100,7 @@
     </div><br>
     <div>
         <strong>Email: admin@mail.com</strong><br>
-        <strong>Password: admin</strong><br>
+        <strong>Password: password</strong><br>
 
     </div>
     </form>
