@@ -18,11 +18,9 @@ use App\Http\Controllers\admin\StatusController;
  */
 
 Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('home');
-    } else {
-        return view('auth.login');
-    }
+   
+        return view('frontend.index');
+    
 });
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
