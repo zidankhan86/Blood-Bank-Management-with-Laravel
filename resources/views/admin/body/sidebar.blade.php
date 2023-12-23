@@ -23,12 +23,21 @@
                    </li>
               
 
-                   <li class="nav-header">donor</li>
+                   <li class="nav-header">Donor</li>
                    <li class="nav-item">
                        <a href="{{ url('manage-donor') }}" class="nav-link">
                            <i class="nav-icon fas fa-user-plus"></i>
                            <p>
                                Manage donor
+                           </p>
+                       </a>
+                   </li>
+                   <li class="nav-header">Inventory</li>
+                   <li class="nav-item">
+                       <a href="{{ url('manage-inv') }}" class="nav-link">
+                           <i class="nav-icon fas fa-user-plus"></i>
+                           <p>
+                               Manage Inventory
                            </p>
                        </a>
                    </li>

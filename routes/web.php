@@ -43,9 +43,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::group(['middleware' => ['auth', 'check_user:1'], 'as' => 'admin.'], function () {
         Route::resource('manage-donor', \App\Http\Controllers\admin\DonorController::class);
         Route::post('donorstatus/update/{slug}', [StatusController::class, 'donorStatus'])->name('donorStatus.update');
-
-    
-
+        Route::resource('manage-inv', \App\Http\Controllers\admin\InventoryController::class);
         });
 
 

@@ -42,6 +42,7 @@ class DonorController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:donors,email', // add email validation rule
             'birthday' => 'required|date',
+            'blood_group' => 'required|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
             'gender' => 'required|string|in:Male,Female,Other',
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
@@ -63,6 +64,7 @@ class DonorController extends Controller
         $donor->user_id = $user->id;
         $donor->name = $validatedData['name'];
         $donor->birthday = $validatedData['birthday'];
+        $donor->blood_group = $validatedData['blood_group'];
         $donor->gender = $validatedData['gender'];
         $donor->address = $validatedData['address'];
         $donor->phone = $validatedData['phone'];
@@ -76,8 +78,7 @@ class DonorController extends Controller
         $donor->save();
 
         // Return a redirect response
-        return redirect()->route('admin.manage-donor.index')
-            ->with('success', 'donor has been added successfully.');
+        return redirect()->back()->with('success', 'donor has been added successfully.');
     }
 
     public function show(string $slug)
