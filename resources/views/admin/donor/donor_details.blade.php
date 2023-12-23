@@ -12,7 +12,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.manage-shift.index') }}">donor</a>
                         </li>
                     </ol>
                 </div>
@@ -86,45 +85,5 @@
 </div>
 
 
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-
-<!-- Your HTML file -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const calendarEl = document.getElementById('calendar')
-    
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'timeGridWeek',
-        firstDay: 6,
-        editable: false,
-        slotMinTime: '07:00:00',
-        slotMaxTime: '20:00:00',
-
-        slotLabelFormat: {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true,
-        },
-        allDaySlot: false,
-        contentHeight: 'auto', // Adjust this value as needed
-        events: [
-            @foreach($routineData as $routine)
-            {
-                id: '{{ $routine->id }}',
-                title: '{{ App\Models\admin\Subject::where('slug', $routine->subject_slug)->first()->value('name') }} - {{  App\Models\admin\Section::where('slug', $routine->section_slug)->first()->value('name') }}',
-                daysOfWeek: ['{{$routine->day}}'],
-                startTime: '{{ $routine->start_time }}',
-                endTime: '{{ $routine->end_time }}',
-                // eventColor:'#' + Math.floor(Math.random()*16777215).toString(16) ,
-
-            },
-            @endforeach
-        ],
-
-    });
-    calendar.render()
-})
-
-</script>
 
 @endsection

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->string('blood_group');
+            $table->string('blood_group')->nullable();
             $table->string('photo')->nullable();
             $table->string('slug')->unique();
             $table->tinyInteger('status')->default(1);

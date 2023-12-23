@@ -80,7 +80,13 @@ class DonorController extends Controller
             ->with('success', 'donor has been added successfully.');
     }
 
-  
+    public function show(string $slug)
+    {
+
+        $donorData = donor::where('slug', $slug)->firstOrFail();
+        return view("admin.donor.donor_details",compact('donorData'));
+
+    }
 
     /**
      * Show the form for editing the specified resource.
