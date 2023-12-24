@@ -23,11 +23,29 @@ use App\Http\Resources\AuthController;
  //auth
 Route::get('/registration',[RegisterController::class,'registration'])->name('register.page');
 Route::post('/registration/Store',[RegistrationController::class,'registrationStore'])->name('register.store');
+
 Route::get('/', function () {
-   
-        return view('frontend.index');
+    $bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+    $inventoryData = [];
+
+    foreach ($bloodGroups as $bloodGroup) {
+        $inventoryData[$bloodGroup] = \App\Models\admin\Inventory::where('blood_group', $bloodGroup)
+            ->where('expire_date', '>', now())
+            ->where('remain_unit', '>=', 0)
+            ->get()
+            ->toArray();
+
+        // Calculate total remaining units for each blood group
+        $totalRemainUnit = array_sum(array_column($inventoryData[$bloodGroup], 'remain_unit'));
+
+        foreach ($inventoryData[$bloodGroup] as &$item) {
+            $item['total_remain_unit'] = $totalRemainUnit;
+        }
+    }
+        return view('frontend.index',compact('bloodGroups', 'inventoryData'));
     
 });
+
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('forbidden', function () {
