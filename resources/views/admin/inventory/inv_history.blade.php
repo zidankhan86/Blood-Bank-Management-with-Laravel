@@ -62,7 +62,6 @@
                                                         <th>Available Unit</th>
                                                         <th>Donate Date</th>
                                                         <th>Exp: Date</th>
-                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -75,7 +74,6 @@
                                                         <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
                                                         <td>{{ date('d M Y', strtotime($data->expire_date)) }}</td>
 
-                                                        <td>{{ $data->phone }}</td>
                                                      
 
                                                     </tr>
@@ -96,7 +94,6 @@
                                                         <th>Available Unit</th>
                                                         <th>Donate Date</th>
                                                         <th>Exp: Date</th>
-                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -109,7 +106,6 @@
                                                         <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
                                                         <td>{{ date('d M Y', strtotime($data->expire_date)) }}</td>
 
-                                                        <td>{{ $data->phone }}</td>
                                                      
 
                                                     </tr>
@@ -127,10 +123,9 @@
                                                     <th>#</th>
                                                     <th>Slug</th>
                                                     <th>Donor Name</th>
-                                                    <th>Available Unit</th>
+                                                    <th>Total Unit</th>
                                                     <th>Donate Date</th>
                                                     <th>Exp: Date</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -139,13 +134,10 @@
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $data->slug }}</td>
                                                     <td>{{ \App\Models\admin\donor::where('slug', $data->donor_slug)->value('name') }}</td>
-                                                    <td>{{ $data->remain_unit }}</td>
+                                                    <td>{{ $data->donate_unit }}</td>
                                                     <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
                                                     <td>{{ date('d M Y', strtotime($data->expire_date)) }}</td>
-
-                                                    <td>{{ $data->phone }}</td>
-                                                 
-
+                                            
                                                 </tr>
                                                 @endforeach
                                             </tbody>

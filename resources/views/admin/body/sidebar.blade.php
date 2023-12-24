@@ -32,6 +32,15 @@
                            </p>
                        </a>
                    </li>
+                   <li class="nav-header">Blood Request</li>
+                   <li class="nav-item">
+                       <a href="{{ url('manage-request') }}" class="nav-link">
+                           <i class="nav-icon fas fa-user-plus"></i>
+                           <p>
+                               Manage Request
+                           </p>
+                       </a>
+                   </li>
                    <li class="nav-header">Inventory</li>
                    <li class="nav-item">
                        <a href="{{ url('manage-inv') }}" class="nav-link">

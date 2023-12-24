@@ -53,6 +53,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::resource('manage-donor', \App\Http\Controllers\admin\DonorController::class);
         Route::post('donorstatus/update/{slug}', [StatusController::class, 'donorStatus'])->name('donorStatus.update');
         Route::resource('manage-inv', \App\Http\Controllers\admin\InventoryController::class);
+        Route::resource('manage-request',\App\Http\Controllers\admin\BloodRequestController::class);
+        Route::get('unit-data/{slug}', [\App\Http\Controllers\admin\BloodRequestController::class, 'showUnits'])->name('showUnits');
+
         });
 
 

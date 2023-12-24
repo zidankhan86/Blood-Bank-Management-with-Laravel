@@ -77,7 +77,7 @@ class InventoryController extends Controller
     {
         $inventoryData = Inventory::where('blood_group', $blood_group)
             ->where('expire_date', '>', now()) // Exclude items that have already expired
-            ->where('remain_unit', '>=', 0)    // Exclude items where remain_unit is less than 0
+            ->where('remain_unit', '>', 0)    // Exclude items where remain_unit is less than 0
             ->orderBy('expire_date')
             ->get();
         $DropeOutUnitData = Inventory::where('blood_group', $blood_group)

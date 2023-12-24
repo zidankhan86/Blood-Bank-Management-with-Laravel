@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('blood_group');
             $table->string('slug');
             $table->string('requested_unit');
+            $table->string('status')->default(2)->nullable(); // 1 for accepted, 2 for on hold, 3 for refused
             $table->string('note')->nullable();
             $table->date('needed_date');
             

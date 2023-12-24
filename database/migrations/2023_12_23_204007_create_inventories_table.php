@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('blood_group');
             $table->date('donate_date');
             $table->date('expire_date');
-            $table->tinyInteger('donate_unit');
-            $table->tinyInteger('tramsfared_unit');
-            $table->tinyInteger('remain_unit');
+            $table->Integer('donate_unit');
+            $table->Integer('transferred_unit');
+            $table->Integer('remain_unit');
             $table->timestamps();
         });
     }

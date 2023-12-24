@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('inventory_histories', function (Blueprint $table) {
             $table->id();
+            $table->string('blood_request_slug')->nullable();
+            $table->string('inventory_slug')->nullable();
+            $table->Integer('donate_unit')->default(0)->nullable();
+
             $table->timestamps();
         });
     }

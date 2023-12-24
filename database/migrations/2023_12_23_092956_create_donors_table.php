@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('blood_group')->nullable();
             $table->string('photo')->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->tinyInteger('status')->default(1)->nullable();            
+            $table->tinyInteger('status')->default(1)->nullable();    // 1 is active, 2 is dactive         
             $table->timestamps();
         });
     }
