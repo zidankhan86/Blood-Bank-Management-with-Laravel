@@ -30,21 +30,26 @@
                             <div class="card-header p-0 border-bottom-0">
                                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="donor-list-tab" data-toggle="pill"
-                                            href="#donor-list" role="tab" aria-controls="donor-list"
+                                        <a class="nav-link active" id="AvailableunitList-tab" data-toggle="pill"
+                                            href="#AvailableunitList" role="tab" aria-controls="AvailableunitList"
                                             aria-selected="true">Available unit List</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            id="add-donor-tab" data-toggle="pill" href="#add-donor" role="tab"
-                                            aria-controls="add-donor" aria-selected="false">Donate History</a>
+                                            id="dropoutUnitList-tab" data-toggle="pill" href="#dropoutUnitList" role="tab"
+                                            aria-controls="dropoutUnitList" aria-selected="false">Drop Out Unit</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link"
+                                            id="UsedUnitList-tab" data-toggle="pill" href="#UsedUnitList" role="tab"
+                                            aria-controls="UsedUnitList" aria-selected="false">Used Unit</a>
                                     </li>
 
                                 </ul>
                             </div>
                             <div class="card-body">
                                 <div class="tab-content" id="custom-tabs-four-tabContent">
-                                    <div class="tab-pane fade show active" id="donor-list" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="AvailableunitList" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-home-tab">
                                       
                                         <div class="card" data-table-title="donor List">
@@ -52,6 +57,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>Slug</th>
                                                         <th>Donor Name</th>
                                                         <th>Available Unit</th>
                                                         <th>Donate Date</th>
@@ -63,6 +69,7 @@
                                                     @foreach ($inventoryData as $key => $data)
                                                     <tr>
                                                         <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $data->slug }}</td>
                                                         <td>{{ \App\Models\admin\donor::where('slug', $data->donor_slug)->value('name') }}</td>
                                                         <td>{{ $data->remain_unit }}</td>
                                                         <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
@@ -77,13 +84,14 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="add-donor" role="tabpanel"
+                                    <div class="tab-pane fade" id="dropoutUnitList" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-profile-tab">
-                                        <div class="card" data-table-title="donor List">
+                                        <div class="card" data-table-title="Drop Out units">
                                             <table id="example2" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>Slug</th>
                                                         <th>Donor Name</th>
                                                         <th>Available Unit</th>
                                                         <th>Donate Date</th>
@@ -92,9 +100,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($allInventoryData as $key => $data)
+                                                    @foreach ($DropeOutUnitData as $key => $data)
                                                     <tr>
                                                         <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $data->slug }}</td>
                                                         <td>{{ \App\Models\admin\donor::where('slug', $data->donor_slug)->value('name') }}</td>
                                                         <td>{{ $data->remain_unit }}</td>
                                                         <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
@@ -109,6 +118,40 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="tab-pane fade" id="UsedUnitList" role="tabpanel"
+                                    aria-labelledby="custom-tabs-four-profile-tab">
+                                    <div class="card" data-table-title="used units">
+                                        <table id="example2" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Slug</th>
+                                                    <th>Donor Name</th>
+                                                    <th>Available Unit</th>
+                                                    <th>Donate Date</th>
+                                                    <th>Exp: Date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($UsedUnitData as $key => $data)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $data->slug }}</td>
+                                                    <td>{{ \App\Models\admin\donor::where('slug', $data->donor_slug)->value('name') }}</td>
+                                                    <td>{{ $data->remain_unit }}</td>
+                                                    <td>{{ date('d M Y', strtotime($data->donate_date)) }}</td>
+                                                    <td>{{ date('d M Y', strtotime($data->expire_date)) }}</td>
+
+                                                    <td>{{ $data->phone }}</td>
+                                                 
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <!-- /.card -->
