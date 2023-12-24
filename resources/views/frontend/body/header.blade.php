@@ -102,7 +102,7 @@
                         </ul>
                         <ul class="navbar-nav ml-auto mt-10">
                             @if (Auth::guest())
-                                
+                                <li>
                                     <a class="nav-link login-button" href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
@@ -110,12 +110,8 @@
                                             class="fa fa-plus-circle"></i> Get Registered</a>
                                 </li>
                                
-                            @else
+                            @elseif(Auth::user()->user_type==3)
                             <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="{{route('blood.request')}}"><i
-                                            class="fa fa-plus-circle"></i>Blood Request</a>
-                                </li>
-                                <li class="nav-item">
                                 <a class="nav-link login-button" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Logout
@@ -127,6 +123,11 @@
                                     @csrf
                                 </form>
                                 </li>
+                            <li class="nav-item">
+                                    <a class="nav-link text-white add-button" href="{{route('patient.blood-request.index')}}"><i
+                                            class="fa fa-plus-circle"></i> Blood Request</a>
+                                </li>
+                             
                             @endif
 
                         </ul>

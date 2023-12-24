@@ -28,7 +28,7 @@ class RegistrationController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
     
-        $user = User::create($request->only(['name', 'user_type', 'email', 'password']));
+        $user = User::create(array_merge($request->only(['name', 'user_type', 'email']), ['password' => Hash::make($request->password)]));
     
         if(in_array($request->user_type, [2, 3])){
             $type = $request->user_type == 2 ? new Donor() : new Patient();

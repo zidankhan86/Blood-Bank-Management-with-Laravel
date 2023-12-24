@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\StatusController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\BloodRequestController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Resources\AuthController;
 
@@ -62,8 +61,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         Route::group(['middleware' => ['auth', 'check_user:3'], 'prefix' => 'patient', 'as' => 'patient.'], function () {
 
-            Route::post('/bood/request-store',[BloodRequestController::class,'store'])->name('blood.store');
-            Route::get('/bood/request-form',[BloodRequestController::class,'index'])->name('blood.request');
+            Route::resource('blood-request', App\Http\Controllers\BloodRequestController::class);
 
 
         });

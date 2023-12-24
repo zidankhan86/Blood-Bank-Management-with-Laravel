@@ -26,23 +26,21 @@
                 </div>
             </div>
             <div class="col-md-6">
-                    <form action="{{route('blood.store')}}" method="post">
+                    <form action="{{route('patient.blood-request.store')}}" method="post">
                         @csrf
                         <fieldset class="p-4">
                             <div class="form-group">
-                                <div class="row">
-                                   
-                                    <div class="col-lg-12 pt-2">
-                                    <label for="">Which date you need blood</label>
-                                        <input type="date" name="needed_date" placeholder="Needed Date *" class="form-control" required>
-                                    </div>
+                                <div class="col-lg-12 pt-2">
 
+                                    <label for="">Which date you need blood</label>
+                                    <input type="date" id="needed_date" name="needed_date" placeholder="Needed Date *" class="form-control" required>
+                                </div>
                                     <div class="col-lg-12 pt-2">
                                         <label for="">Enter unit</label>
-                                        <input type="number" name="requested_unit" placeholder="2*" class="form-control" required>
+                                        <input type="number" name="requested_unit" min="1" value="1" class="form-control" required>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="col-lg-12 pt-2">
+
                             <label for="">Select Blood Group</label>
 
                             <select name="blood_group" id="" class="form-control w-100">
@@ -58,10 +56,16 @@
 
 
                             </select>
+                                    </div>
+                                    <div class="col-lg-12 pt-2">
+
                             <textarea name="note"   placeholder="Write note(Not mendetory) *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                                    </div>
                             <div class="btn-grounp">
                                 <button type="submit" class="btn btn-primary mt-2 float-right">Blood Request</button>
                             </div>
+                        </div>
+
                         </fieldset>
                     </form>
             </div>
@@ -69,4 +73,10 @@
     </div>
 </section>
 <!-- contact us end -->
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('needed_date').setAttribute('min', today);
+</script>
+
 @endsection
