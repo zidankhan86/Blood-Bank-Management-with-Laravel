@@ -204,29 +204,29 @@
                 </div>
                 <div class="row">
                 @foreach($bloodGroups as $bloodGroup)
-    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-        <div class="category-block">
-            <div class="header">
-                <i class="fa fa-heart icon-bg-{{ $loop->iteration }}"></i>
-                <h4>{{ $bloodGroup }}</h4>
-            </div>
-            <ul class="category-list">
-                @if(count($inventoryData[$bloodGroup]) > 0)
-                    @foreach($inventoryData[$bloodGroup] as $item)
-                        <li>
-                            <a href="{{ route('admin.manage-inv.show', $item['blood_group']) }}">
+                 <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
+                 <div class="category-block">
+                <div class="header">
+                    <i class="fa fa-heart icon-bg-{{ $loop->iteration }}"></i>
+                    <h4>{{ $bloodGroup }}</h4>
+                    </div>
+                    <ul class="category-list">
+                    @if(count($inventoryData[$bloodGroup]) > 0)
+                        @foreach($inventoryData[$bloodGroup] as $item)
+                            <li>
+                                <a href="{{ route('admin.manage-inv.show', $item['blood_group']) }}">
                                 {{ $item['blood_group'] }}
                                 <span>{{ $item['total_remain_unit'] }}</span>
                             </a>
                         </li>
                     @endforeach
-                @else
-                    <li style="color: red;">No blood is available</li>
-                @endif
-            </ul>
-        </div>
-    </div>
-@endforeach
+                            @else
+                                <li style="color: red;">No blood is available</li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+                 @endforeach
 
                 </div>
             </div>
