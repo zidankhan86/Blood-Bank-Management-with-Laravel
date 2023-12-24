@@ -106,13 +106,10 @@
                                     <a class="nav-link login-button" href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                            class="fa fa-plus-circle"></i> Make a Request</a>
+                                    <a class="nav-link text-white add-button" href="{{route('register.page')}}"><i
+                                            class="fa fa-plus-circle"></i> Get Registered</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                            class="fa fa-plus-circle"></i> Be a Donor</a>
-                                </li>
+                               
                             @else
                                 <a class="nav-link login-button" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
