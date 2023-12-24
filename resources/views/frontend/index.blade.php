@@ -11,28 +11,9 @@
                 <div class="col-md-12">
                     <!-- Header Contetnt -->
                     <div class="content-block">
-                        <h1>Buy & Sell Near You </h1>
-                        <p>Join the millions who buy and sell from each other <br> everyday in local communities around the
-                            world</p>
+                        <h1>Blood Bank. </h1>
+                        <p>Join the millions who donate blood and collect blood from each other <br> everyday is a beautiful day</p>
                         <div class="short-popular-category-list text-center">
-                            <h2>Popular Category</h2>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="fa fa-bed"></i> Hotel</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="fa fa-grav"></i> Fitness</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="fa fa-car"></i> Cars</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="fa fa-cutlery"></i> Restaurants</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="fa fa-coffee"></i> Cafe</a>
-                                </li>
-                            </ul>
                         </div>
 
                     </div>
@@ -82,8 +63,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2>Trending Adds</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+                        <h2>Be kind , Donate blood</h2>
+                        <p>Today you are a hero , blood is life .</p>
                     </div>
                 </div>
             </div>
@@ -104,10 +85,9 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="#">11inch Macbook Air</a></h4>
+                                        <h4 class="card-title"><a href="#">Be a hero, donate today</a></h4>
 
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!</p>
+                                        <p class="card-text">Donate blood, save a life. Your kindness and generosity can make an everlasting impact</p>
 
                                     </div>
                                 </div>
@@ -127,10 +107,9 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="#">Full Study Table Combo</a></h4>
+                                        <h4 class="card-title"><a href="#">Urgent need for blood donation.</a></h4>
 
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!</p>
+                                        <p class="card-text">Urgent call for help! A life is in need. Your blood donation can be the lifeline. </p>
 
                                     </div>
                                 </div>
@@ -150,10 +129,9 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="#">11inch Macbook Air</a></h4>
+                                        <h4 class="card-title"><a href="#">Donate blood, save lives.</a></h4>
 
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!</p>
+                                        <p class="card-text">Every drop counts! Your blood donation can save lives. </p>
 
                                     </div>
                                 </div>
@@ -173,10 +151,9 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="#">Full Study Table Combo</a></h4>
+                                        <h4 class="card-title"><a href="#">Donate blood, save a life. </a></h4>
 
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!</p>
+                                        <p class="card-text">Your kindness and generosity can make an everlasting impact</p>
 
                                     </div>
                                 </div>
@@ -298,24 +275,5 @@
     =            Call to Action            =
     =====================================-->
 
-    <section class="call-to-action overly bg-3 section-sm">
-        <!-- Container Start -->
-        <div class="container">
-            <div class="row justify-content-md-center text-center">
-                <div class="col-md-8">
-                    <div class="content-holder">
-                        <h2>Start today to get more exposure and
-                            grow your business</h2>
-                        <ul class="list-inline mt-30">
-                            <li class="list-inline-item"><a class="btn btn-main" href="#">Add Listing</a>
-                            </li>
-                            <li class="list-inline-item"><a class="btn btn-secondary" href="#">Browser
-                                    Listing</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Container End -->
-    </section>
+   
 @endsection
