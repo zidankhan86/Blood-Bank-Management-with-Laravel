@@ -80,12 +80,16 @@ class InventoryController extends Controller
             ->where('remain_unit', '>=', 0)    // Exclude items where remain_unit is less than 0
             ->orderBy('expire_date')
             ->get();
-        $allInventoryData = Inventory::where('blood_group', $blood_group)
-            ->where('expire_date', '<', now()) // Exclude items that have already expired
-            ->Orwhere('remain_unit', '<=', 0)    // Exclude items where remain_unit is less than 0
+        $DropeOutUnitData = Inventory::where('blood_group', $blood_group)
+            ->where('expire_date', '<', now()) // include items that have already expired
+            ->where('remain_unit', '>', 0)    // Exclude items where remain_unit is less than 0
             ->orderBy('expire_date', 'desc') // Order by expire_date in descending order
             ->get();
-        return view('admin.inventory.inv_history', compact('inventoryData', 'allInventoryData', 'blood_group'));
+            $UsedUnitData = Inventory::where('blood_group', $blood_group)
+            ->where('remain_unit', '=', 0)    // Exclude items where remain_unit is less than 0
+            ->orderBy('expire_date', 'desc') // Order by expire_date in descending order
+            ->get();
+        return view('admin.inventory.inv_history', compact('inventoryData','UsedUnitData' ,'DropeOutUnitData', 'blood_group'));
     }
 
     /**
