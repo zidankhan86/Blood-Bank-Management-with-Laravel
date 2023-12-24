@@ -11,6 +11,7 @@ class RegistrationController extends Controller
 {
    public function registrationStore(Request $request)
 {
+    //  dd($request->all());
     // Validate user input
     $validator = Validator::make($request->all(), [
         'name' => 'required',

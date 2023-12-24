@@ -24,14 +24,22 @@
 
 
               <input class="form-control mb-3" type="password" placeholder="Password*" name="password" required>
+
               <div class="form-group mb-3">
-              <label for="">Choose an option</label>
-            <select name="user_type" class="form-control">
-               
-                <option value="4">Donor</option>
-                <option value="5">Customer</option>
-            </select>
+            <strong>You are a </strong>
+
+            <div class="form-check form-check-inline">
+                <input type="radio" name="user_type" id="donor" class="form-check-input" value="2">
+                <label for="donor" class="form-check-label">Donor</label>
             </div>
+
+            <div class="form-check form-check-inline">
+                <input type="radio" name="user_type" id="patient" class="form-check-input" value="3">
+                <label for="patient" class="form-check-label">Patient</label>
+            </div>
+            </div>
+
+
   
               <div class="d-flex justify-content-center align-items-center mt-3">
                  <button type="submit" class="btn btn-primary font-weight-bold">Register Now</button>
