@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('blood_requests', function (Blueprint $table) {
             $table->id();
             $table->string('patient_slug');
+            $table->string('blood_group');
             $table->string('slug');
             $table->string('requested_unit');
+            $table->string('note')->nullable();
             $table->date('needed_date');
+            
             $table->timestamps();
         });
     }

@@ -206,84 +206,85 @@
                     <div class="row">
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                            <a href="{{route('blood.request')}}"><div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-1"></i>
                                     <h4>A+</h4>
                                 </div>
                             <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'A+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
+                        
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                           <a href=""> <div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-2"></i>
                                     <h4>A-</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'A-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                           <a href=""> <div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-3"></i>
                                     <h4>B+</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'B+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                        <a href=""><div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-4"></i>
                                     <h4>B-</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'B-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                        <a href=""><div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-5"></i>
                                     <h4>AB+</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'AB+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                        <a href=""><div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-6"></i>
                                     <h4>AB-</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'AB-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                        <a href=""><div class="category-block">
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-7"></i>
                                     <h4>O+</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'O+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
                         <!-- Category list -->
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-                            <div class="category-block">
+                        <a href=""> <div class="category-block">
 
                                 <div class="header">
                                     <i class="fa fa-plus-square icon-bg-8"></i>
                                     <h4>O-</h4>
                                 </div>
                                 <h4 style="text-align: center">Alailable Unit: {{ \App\Models\admin\Inventory::where('blood_group', 'O-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}</h4>
-                            </div>
+                            </div></a>
                         </div> <!-- /Category List -->
 
                     </div>

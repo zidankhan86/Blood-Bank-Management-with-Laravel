@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\frontend\BloodRequest;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\frontend\BloodRequest;
 
 class BloodRequestController extends Controller
 {
@@ -28,7 +29,16 @@ class BloodRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        BloodRequest::create([
+            "patient_slug" =>"eta kisher theke ashbe? ta ektu boshaya diyen . bujtesi na ",
+            "slug" => Str::slug($request->blood_group), 
+            "requested_unit" => $request->requested_unit,
+            "note" => $request->note,
+            "needed_date" => $request->needed_date,
+            "blood_group" => $request->blood_group,
+        ]);
+        
+        return back()->with('success', 'Your request has been successful');
     }
 
     /**

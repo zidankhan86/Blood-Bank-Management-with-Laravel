@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-md-8 offset-md-2 text-center">
 				<!-- Title text -->
-				<h3>Contact Us</h3>
+				<h3>Blood Request</h3>
 			</div>
 		</div>
 	</div>
@@ -20,34 +20,47 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="contact-us-content p-4">
-                    <h5>Contact Us</h5>
+                  
                     <h1 class="pt-3">Hello, what's on your mind?</h1>
-                    <p class="pt-3 pb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, blandit vel euismod ac, lentesque et dolor. Ut id tempus ipsum.</p>
+                    <p class="pt-3 pb-5">Please fill-up this form before ask for blood.</p>
                 </div>
             </div>
             <div class="col-md-6">
-                    <form action="#">
+                    <form action="{{route('blood.store')}}" method="post">
+                        @csrf
                         <fieldset class="p-4">
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-6 py-2">
-                                        <input type="text" placeholder="Name *" class="form-control" required>
+                                   
+                                    <div class="col-lg-12 pt-2">
+                                    <label for="">Which date you need blood</label>
+                                        <input type="date" name="needed_date" placeholder="Needed Date *" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-6 pt-2">
-                                        <input type="email" placeholder="Email *" class="form-control" required>
+
+                                    <div class="col-lg-12 pt-2">
+                                        <label for="">Enter unit</label>
+                                        <input type="number" name="requested_unit" placeholder="2*" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
-                            <select name="" id="" class="form-control w-100">
-                                <option value="1">Select Category</option>
-                                <option value="1">Laptop</option>
-                                <option value="1">iPhone</option>
-                                <option value="1">Monitor</option>
-                                <option value="1">I need</option>
+                            <label for="">Select Blood Group</label>
+
+                            <select name="blood_group" id="" class="form-control w-100">
+                                <option>Select Blood Group</option>
+                                <option value="A">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+
+
                             </select>
-                            <textarea name="message" id=""  placeholder="Message *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <textarea name="note"   placeholder="Write note(Not mendetory) *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-primary mt-2 float-right">SUBMIT</button>
+                                <button type="submit" class="btn btn-primary mt-2 float-right">Blood Request</button>
                             </div>
                         </fieldset>
                     </form>

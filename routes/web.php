@@ -25,6 +25,10 @@ use App\Http\Resources\AuthController;
 Route::get('/registration',[RegisterController::class,'registration'])->name('register.page');
 Route::post('/registration/Store',[RegistrationController::class,'registrationStore'])->name('register.store');
 
+
+// Route::get('/bood/request-form',[BloodRequestController::class,'index'])->name('blood.request');
+// Route::post('/bood/request-store',[BloodRequestController::class,'store'])->name('blood.store');
+
 //Blood Group and Home
 Route::get('/', function () {
    
@@ -54,10 +58,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
 
         Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'donor', 'as' => 'donor.'], function () {
-            Route::get('/bood/request-form',[BloodRequestController::class,'index'])->name('blood.request');
         });
 
         Route::group(['middleware' => ['auth', 'check_user:3'], 'prefix' => 'patient', 'as' => 'patient.'], function () {
+
+            Route::post('/bood/request-store',[BloodRequestController::class,'store'])->name('blood.store');
+            Route::get('/bood/request-form',[BloodRequestController::class,'index'])->name('blood.request');
 
 
         });
