@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\StatusController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BloodRequestController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Resources\AuthController;
 
@@ -26,25 +27,12 @@ Route::post('/registration/Store',[RegistrationController::class,'registrationSt
 
 //Blood Group and Home
 Route::get('/', function () {
-    $bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
-    $inventoryData = [];
-
-    foreach ($bloodGroups as $bloodGroup) {
-        $inventoryData[$bloodGroup] = \App\Models\admin\Inventory::where('blood_group', $bloodGroup)
-            ->where('expire_date', '>', now())
-            ->where('remain_unit', '>=', 0)
-            ->get()
-            ->toArray();
-        // Calculate total remaining units
-        $totalRemainUnit = array_sum(array_column($inventoryData[$bloodGroup], 'remain_unit'));
-
-        foreach ($inventoryData[$bloodGroup] as &$item) {
-            $item['total_remain_unit'] = $totalRemainUnit;
-        }
-    }
-        return view('frontend.index',compact('bloodGroups', 'inventoryData'));
+   
+        return view('frontend.index');
     
 });
+
+
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
@@ -66,7 +54,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
 
         Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'donor', 'as' => 'donor.'], function () {
-
+            Route::get('/bood/request-form',[BloodRequestController::class,'index'])->name('blood.request');
         });
 
         Route::group(['middleware' => ['auth', 'check_user:3'], 'prefix' => 'patient', 'as' => 'patient.'], function () {
