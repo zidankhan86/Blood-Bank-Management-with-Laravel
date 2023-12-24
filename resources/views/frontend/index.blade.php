@@ -213,12 +213,13 @@
                     <ul class="category-list">
                     @if(count($inventoryData[$bloodGroup]) > 0)
                         @foreach($inventoryData[$bloodGroup] as $item)
-                            <li>
-                                <a href="{{ route('admin.manage-inv.show', $item['blood_group']) }}">
-                                {{ $item['blood_group'] }}
-                                <span>{{ $item['total_remain_unit'] }}</span>
+                            <!-- <li>
+                                <a href="#">
+                                Availeable
+                                <span><strong style="color: green;"></strong> </span>
                             </a>
-                        </li>
+                        </li> -->
+                        <h4 style="text-align: center;">Available unit {{ $item['total_remain_unit'] }}</h4>
                     @endforeach
                             @else
                                 <li style="color: red;">No blood is available</li>
