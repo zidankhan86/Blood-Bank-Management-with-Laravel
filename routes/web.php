@@ -43,46 +43,19 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::group(['middleware' => ['auth', 'check_user:1'], 'as' => 'admin.'], function () {
         Route::resource('manage-donor', \App\Http\Controllers\admin\DonorController::class);
         Route::post('donorstatus/update/{slug}', [StatusController::class, 'donorStatus'])->name('donorStatus.update');
-
-    
-
+        Route::resource('manage-inv', \App\Http\Controllers\admin\InventoryController::class);
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-     
-        
-
-
-        Route::group(['middleware' => ['auth', 'check_user:2'], 'as' => 'teacher.'], function () {
+        Route::group(['middleware' => ['auth', 'check_user:2'], 'prefix' => 'donor', 'as' => 'donor.'], function () {
 
         });
 
-        Route::group(['middleware' => ['auth', 'check_user:3'], 'prefix' => 'student', 'as' => 'student.'], function () {
-            // routes that only student can access
+        Route::group(['middleware' => ['auth', 'check_user:3'], 'prefix' => 'patient', 'as' => 'patient.'], function () {
+
+
         });
 
-        Route::group(['middleware' => ['auth', 'check.userType:4'], 'prefix' => 'parent', 'as' => 'parent.'], function () {
-            // routes that only parent can access
-        });
-
-        Route::group(['middleware' => ['auth', 'check.userType:5'], 'prefix' => 'accountant', 'as' => 'accountant.'], function () {
-            // routes that only accountant can access
-        });
-
-        Route::group(['middleware' => ['auth', 'check.userType:6'], 'prefix' => 'library', 'as' => 'library.'], function () {
-            // routes that only library can access
-        });
 
     });
 
