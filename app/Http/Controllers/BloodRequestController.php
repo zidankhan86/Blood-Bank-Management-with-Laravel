@@ -33,12 +33,12 @@ class BloodRequestController extends Controller
     {
         $bloodRequest = new BloodRequest;
         $bloodRequest->patient_slug = Patient::where('user_id',Auth::user()->id)->value('slug');
-        dd(   $bloodRequest->patient_slug);
         $bloodRequest->slug = Str::slug($request->blood_group);
         $bloodRequest->requested_unit = $request->requested_unit;
         $bloodRequest->note = $request->note;
         $bloodRequest->needed_date = $request->needed_date;
-        $bloodRequest->blood_group = $request->blood_group;
+        $bloodRequest->slug = Str::slug(Str::random(10));
+        $bloodRequest->blood_group = Patient::where('user_id',Auth::user()->id)->value('blood_group');
         $bloodRequest->save();
         
         

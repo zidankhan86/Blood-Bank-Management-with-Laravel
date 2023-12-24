@@ -39,24 +39,7 @@
                                         <label for="">Enter unit</label>
                                         <input type="number" name="requested_unit" min="1" value="1" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-12 pt-2">
-
-                            <label for="">Select Blood Group</label>
-
-                            <select name="blood_group" id="" class="form-control w-100">
-                                <option>Select Blood Group</option>
-                                <option value="A">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-
-
-                            </select>
-                                    </div>
+                           
                                     <div class="col-lg-12 pt-2">
 
                             <textarea name="note"   placeholder="Write note(Not mendetory) *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
