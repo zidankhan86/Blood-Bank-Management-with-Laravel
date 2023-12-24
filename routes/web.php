@@ -24,6 +24,7 @@ use App\Http\Resources\AuthController;
 Route::get('/registration',[RegisterController::class,'registration'])->name('register.page');
 Route::post('/registration/Store',[RegistrationController::class,'registrationStore'])->name('register.store');
 
+//Blood Group and Home
 Route::get('/', function () {
     $bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
     $inventoryData = [];
@@ -34,8 +35,7 @@ Route::get('/', function () {
             ->where('remain_unit', '>=', 0)
             ->get()
             ->toArray();
-
-        // Calculate total remaining units for each blood group
+        // Calculate total remaining units
         $totalRemainUnit = array_sum(array_column($inventoryData[$bloodGroup], 'remain_unit'));
 
         foreach ($inventoryData[$bloodGroup] as &$item) {
