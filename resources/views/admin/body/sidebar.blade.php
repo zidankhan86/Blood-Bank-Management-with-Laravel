@@ -32,10 +32,19 @@
                            </p>
                        </a>
                    </li>
+                   <li class="nav-header">Patient</li>
+                   <li class="nav-item">
+                       <a href="{{ url('manage-patient') }}" class="nav-link  {{ request()->is('manage-patient') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-user-plus"></i>
+                           <p>
+                               Manage patient
+                           </p>
+                       </a>
+                   </li>
                    <li class="nav-header">Blood Request</li>
                    <li class="nav-item">
                        <a href="{{ url('manage-request') }}" class="nav-link {{ request()->is('manage-request') ? 'active' : '' }}">
-                           <i class="nav-icon fas fa-user-plus"></i>
+                           <i class="nav-icon fas fa-ambulance"></i>
                            <p>
                                Manage Request
                            </p>
@@ -44,7 +53,7 @@
                    <li class="nav-header">Inventory</li>
                    <li class="nav-item">
                        <a href="{{ url('manage-inv') }}" class="nav-link {{ request()->is('manage-inv') ? 'active' : '' }}">
-                           <i class="nav-icon fas fa-user-plus"></i>
+                           <i class="nav-icon fas fa-cart-plus"></i>
                            <p>
                                Manage Inventory
                            </p>

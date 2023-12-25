@@ -48,7 +48,6 @@ class BloodRequestController extends Controller
         
         $bloodRequest = new BloodRequest;
         $bloodRequest->patient_slug = Patient::where('user_id',Auth::user()->id)->value('slug');
-        $bloodRequest->slug = Str::slug($request->blood_group);
         $bloodRequest->requested_unit = $request->requested_unit;
         $bloodRequest->note = $request->note;
         $bloodRequest->needed_date = $request->needed_date;

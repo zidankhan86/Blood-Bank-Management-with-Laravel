@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Manage donor</h1>
+                    <h1>Manage Patient</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -30,31 +30,31 @@
                             <div class="card-header p-0 border-bottom-0">
                                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="donor-list-tab" data-toggle="pill"
-                                            href="#donor-list" role="tab" aria-controls="donor-list"
-                                            aria-selected="true">donor List</a>
+                                        <a class="nav-link active" id="patient-list-tab" data-toggle="pill"
+                                            href="#patient-list" role="tab" aria-controls="patient-list"
+                                            aria-selected="true">patient List</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ isset($editData) ? 'disabled' : '' }}"
-                                            id="add-donor-tab" data-toggle="pill" href="#add-donor" role="tab"
-                                            aria-controls="add-donor" aria-selected="false">Add donor</a>
+                                            id="add-patient-tab" data-toggle="pill" href="#add-patient" role="tab"
+                                            aria-controls="add-patient" aria-selected="false">Add patient</a>
                                     </li>
 
                                 </ul>
                             </div>
                             <div class="card-body">
                                 <div class="tab-content" id="custom-tabs-four-tabContent">
-                                    <div class="tab-pane fade show active" id="donor-list" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="patient-list" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-home-tab">
                                         @if (!empty($editData))
                                         <div class="card card-primary">
                                             <div class="card-header">
-                                                <h3 class="card-title">donor Information</h3>
+                                                <h3 class="card-title">patient Information</h3>
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
                                             {!! Form::model($editData, [
-                                            'route' => ['admin.manage-donor.update', $editData->slug],
+                                            'route' => ['admin.manage-patient.update', $editData->slug],
                                             'method' => 'PUT',
                                             'files' => true,
                                             ]) !!}
@@ -102,7 +102,7 @@
                                                             {!! Form::email('email', null, ['class' => 'form-control',
                                                             'placeholder' => 'Enter email']) !!}
                                                         </div>
-                                                    
+                                                   
                                                         <div class="form-group">
                                                             {!! Form::label('photo', 'Photo') !!}
                                                             <div class="custom-file">
@@ -163,7 +163,7 @@
                                             </div>
                                             <!-- /.card-body -->
                                             <div class="card-footer">
-                                                <a class="btn btn-danger float-ledt" href="{{ route('admin.manage-donor.index') }}">Cancel</a>
+                                                <a class="btn btn-danger float-ledt" href="{{ route('admin.manage-patient.index') }}">Cancel</a>
 
                                                 {!! Form::submit('Submit', ['class' => 'btn btn-primary float-right'])
                                                 !!}
@@ -171,7 +171,7 @@
                                             {!! Form::close() !!}
                                         </div>
                                         @endif
-                                        <div class="card" data-table-title="donor List">
+                                        <div class="card" data-table-title="patient List">
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
@@ -187,25 +187,25 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($donorData as $key => $donor)
+                                                    @foreach ($patientData as $key => $patient)
                                                     <tr>
                                                         <td>{{ $key + 1 }}</td>
                                                         <td>
-                                                            @if ($donor->photo)
-                                                            <img src="{{ asset('storage/' . $donor->photo) }}"
-                                                                alt="{{ $donor->name }}" width="50">
+                                                            @if ($patient->photo)
+                                                            <img src="{{ asset('storage/' . $patient->photo) }}"
+                                                                alt="{{ $patient->name }}" width="50">
                                                             @else
                                                             <img src="{{ asset('backend/dist/img/noimage.png') }}"
                                                                 alt="No Image" width="50">
                                                             @endif
                                                         </td>
-                                                        <td>{{ $donor->name }}</td>
-                                                        <td>{{ date('d M Y', strtotime($donor->birthday)) }}</td>
-                                                        <td>{{ $donor->address }}</td>
-                                                        <td>{{ $donor->email }}</td>
-                                                        <td>{{ $donor->phone }}</td>
+                                                        <td>{{ $patient->name }}</td>
+                                                        <td>{{ date('d M Y', strtotime($patient->birthday)) }}</td>
+                                                        <td>{{ $patient->address }}</td>
+                                                        <td>{{ $patient->email }}</td>
+                                                        <td>{{ $patient->phone }}</td>
                                                         <td>
-                                                            @if ($donor->status == 1)
+                                                            @if ($patient->status == 1)
                                                             <span class="badge bg-success">Active</span>
                                                             @else
                                                             <span class="badge bg-danger">Deactive</span>
@@ -220,25 +220,29 @@
                                                             </button>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item"
-                                                                href="{{ route('admin.manage-donor.show', $donor->slug) }}"><i
+                                                                href="{{ route('admin.manage-patient.show', $patient->slug) }}"><i
                                                                     class="fa fa-eye"></i> view</a>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('admin.manage-donor.edit', $donor->slug) }}"><i
+                                                                    href="{{ route('admin.manage-patient.edit', $patient->slug) }}"><i
                                                                         class="fa fa-edit"></i> Edit</a>
 
                                                                 <a class="dropdown-item" data-toggle="modal"
-                                                                    href="#modal-status{{ $donor->slug }}"><i
+                                                                    href="#modal-status{{ $patient->slug }}"><i
                                                                         class="fa fa-check-square"></i>
                                                                     Status</a>
+                                                                    <a class="dropdown-item" data-toggle="modal"
+                                                                    href="#modal-request{{ $patient->slug }}"><i
+                                                                        class="fa fa-ambulance"></i>
+                                                                    Create Request</a>
                                                                 <a class="dropdown-item" data-toggle="modal"
-                                                                    href="#modal-password{{ $donor->user_id }}"><i
+                                                                    href="#modal-password{{ $patient->user_id }}"><i
                                                                         class="fa fa-lock"></i> Change password</a>
                                                                 <a class="dropdown-item" href="#"
-                                                                    onclick="event.preventDefault(); confirmDelete('{{ $donor->slug }}', '{{ route('admin.manage-donor.destroy', $donor->slug) }}');">
+                                                                    onclick="event.preventDefault(); confirmDelete('{{ $patient->slug }}', '{{ route('admin.manage-patient.destroy', $patient->slug) }}');">
                                                                     <i class="fa fa-trash"></i> Delete
                                                                 </a>
-                                                                <form id="delete-class-form-{{ $donor->slug }}"
-                                                                    action="{{ route('admin.manage-donor.destroy', $donor->slug) }}"
+                                                                <form id="delete-class-form-{{ $patient->slug }}"
+                                                                    action="{{ route('admin.manage-patient.destroy', $patient->slug) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -250,12 +254,12 @@
 
 
                                                             <div class="modal fade"
-                                                                id="modal-status{{ $donor->slug }}">
+                                                                id="modal-status{{ $patient->slug }}">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h4 class="modal-title">Edit
-                                                                                {{ $donor->name }}'s Status</h4>
+                                                                                {{ $patient->name }}'s Status</h4>
                                                                             <button type="button" class="close"
                                                                                 data-dismiss="modal" aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
@@ -263,8 +267,8 @@
                                                                         </div>
 
                                                                         {!! Form::open([
-                                                                        'route' => ['admin.donorStatus.update',
-                                                                        $donor->slug],
+                                                                        'route' => ['admin.patientStatus.update',
+                                                                        $patient->slug],
                                                                         'method' => 'POST',
                                                                         ]) !!}
                                                                         @csrf
@@ -285,11 +289,11 @@
                                                                                                 Select Status
                                                                                             </option>
                                                                                             <option value="1" {{
-                                                                                                $donor->status == '1'
+                                                                                                $patient->status == '1'
                                                                                                 ? 'selected' : '' }}>
                                                                                                 Active</option>
                                                                                             <option value="0" {{
-                                                                                                $donor->status == '0'
+                                                                                                $patient->status == '0'
                                                                                                 ? 'selected' : '' }}>
                                                                                                 Deactive</option>
                                                                                         </select>
@@ -316,13 +320,81 @@
                                                                 <!-- /.modal-dialog -->
                                                             </div>
 
+                                                            <div class="modal fade" id="modal-request{{ $patient->slug }}">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title">Create
+                                                                                Request</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+        
+        
+        
+                                                                        {!! Form::open([
+                                                                            'route' => ['admin.create.request',
+                                                                            $patient->slug],
+                                                                            'method' => 'POST',
+                                                                            ]) !!}
+                                                                            @csrf
+    
+                                                                            <div class="modal-body">
+    
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="row">
+
+                                                                                        <div class="input-group">
+                                                                                            
+                                                                                            <div class="form-group">
+                                                                                                {!! Form::label('requested_unit', 'Requested Unit') !!}
+                                                                                                {!! Form::number('requested_unit', 1, ['class' => 'form-control', 'placeholder' => 'Enter Unit']) !!}
+                                                                                            </div>
+                                                                                            
+                                                                                            <div class="form-group">
+                                                                                                {!! Form::label('needed_date', 'Needed Date') !!}
+                                                                                                {!! Form::date('needed_date', \Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control', 'min' => \Carbon\Carbon::now()->format('Y-m-d')]) !!}
+                                                                                            </div>
+                                                                                            
+    
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+    
+                                                                            </div>
+                                                                            <div
+                                                                                class="modal-footer justify-content-between">
+                                                                                <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">Close</button>
+                                                                                {{ Form::submit('submit', ['class' => 'btn
+                                                                                btn-success']) }}
+                                                                            </div>
+                                                                            {!! Form::close() !!}
+                                                                      
+        
+                                                                    </div>
+                                                                    <!-- /.modal-content -->
+                                                                </div>
+                                                                <!-- /.modal-dialog -->
+                                                            </div>
+
+
+
+
+
+
+
+
                                                             <div class="modal fade"
-                                                                id="modal-password{{ $donor->user_id }}">
+                                                                id="modal-password{{ $patient->user_id }}">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h4 class="modal-title">Update
-                                                                                {{ $donor->name }}'s Password</h4>
+                                                                                {{ $patient->name }}'s Password</h4>
                                                                             <button type="button" class="close"
                                                                                 data-dismiss="modal" aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
@@ -331,7 +403,7 @@
 
                                                                         {!! Form::open([
                                                                         'route' => ['change-password',
-                                                                        $donor->user_id],
+                                                                        $patient->user_id],
                                                                         'method' => 'POST',
                                                                         ]) !!}
                                                                         @csrf
@@ -423,16 +495,16 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="add-donor" role="tabpanel"
+                                    <div class="tab-pane fade" id="add-patient" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-profile-tab">
                                         <div class="card card-primary">
                                             <div class="card-header">
-                                                <h3 class="card-title">donor Information</h3>
+                                                <h3 class="card-title">patient Information</h3>
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
                                             {!! Form::open([
-                                            'route' => 'admin.manage-donor.store',
+                                            'route' => 'admin.manage-patient.store',
                                             'method' => 'POST',
                                             'files' => true,
                                             'enctype' => 'multipart/form-data',
@@ -529,7 +601,7 @@
                                             </div>
                                             <!-- /.card-body -->
                                             <div class="card-footer">
-                                                <a class="btn btn-danger float-ledt" href="{{ route('admin.manage-donor.index') }}">Cancel</a>
+                                                <a class="btn btn-danger float-ledt" href="{{ route('admin.manage-patient.index') }}">Cancel</a>
 
                                                 {!! Form::submit('Submit', ['class' => 'btn btn-primary float-right'])
                                                 !!}
