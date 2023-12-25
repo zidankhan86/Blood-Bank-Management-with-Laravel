@@ -42,7 +42,7 @@
                                 <div class="inner">
                                     <h3>150</h3>
 
-                                    <p>New Orders</p>
+                                    <p>Total User</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
