@@ -14,7 +14,7 @@
                    <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                    <li class="nav-item">
-                       <a href="{{ route('home') }}" class="nav-link active">
+                       <a href="{{ route('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-th"></i>
                            <p>
                                Dashboard
@@ -25,7 +25,7 @@
 
                    <li class="nav-header">Donor</li>
                    <li class="nav-item">
-                       <a href="{{ url('manage-donor') }}" class="nav-link">
+                       <a href="{{ url('manage-donor') }}" class="nav-link  {{ request()->is('manage-donor') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-plus"></i>
                            <p>
                                Manage donor
@@ -34,7 +34,7 @@
                    </li>
                    <li class="nav-header">Blood Request</li>
                    <li class="nav-item">
-                       <a href="{{ url('manage-request') }}" class="nav-link">
+                       <a href="{{ url('manage-request') }}" class="nav-link {{ request()->is('manage-request') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-plus"></i>
                            <p>
                                Manage Request
@@ -43,7 +43,7 @@
                    </li>
                    <li class="nav-header">Inventory</li>
                    <li class="nav-item">
-                       <a href="{{ url('manage-inv') }}" class="nav-link">
+                       <a href="{{ url('manage-inv') }}" class="nav-link {{ request()->is('manage-inv') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-plus"></i>
                            <p>
                                Manage Inventory
