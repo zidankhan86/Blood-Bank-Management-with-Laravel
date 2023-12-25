@@ -46,4 +46,11 @@ class HomeController extends Controller
     {
         return view('admin_master');
     }
+
+    public function profile()
+    {
+        return view('frontend.profile.profile');
+    }
+
+    
 }

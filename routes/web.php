@@ -45,7 +45,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Auth::routes();
     Route::group(['middleware' => 'auth'], function () {
-
+        Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::post('/change-password/{id}', [App\Http\Controllers\Auth\UpdatePasswordController::class, 'updatePassword'])->name('change-password');
         // Route::group(['middleware' => ['auth', 'check_user:1'], 'prefix' => 'admin', 'as' => 'admin.'], function ()

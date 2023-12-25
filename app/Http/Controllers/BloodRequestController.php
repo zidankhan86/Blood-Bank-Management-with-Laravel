@@ -35,13 +35,14 @@ class BloodRequestController extends Controller
         $validator = Validator::make($request->all(), [
             'requested_unit' => 'required|integer|min:1',
             'note' => 'nullable|string|max:255',
-            'needed_date' => 'required|date|after_or_equal:today',
-            'blood_group' => 'required',
+            'needed_date' => 'required',
+            'blood_group' => 'nullable',
 
         ]);
         
-       toastr()->error("Failed, You are not registered");
         if ($validator->fails()) {
+       toastr()->error("Failed, You are not registered");
+
             return back()->withErrors($validator)->withInput();
         }
         

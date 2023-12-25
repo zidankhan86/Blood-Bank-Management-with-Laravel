@@ -27,7 +27,7 @@
                                
                                 <!-- Dropdown list -->
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item @@category" href="">Profile</a></li>
+                                    <li><a class="dropdown-item @@category" href="{{route('profile')}}">Profile</a></li>
                                     <li><a class="dropdown-item @@listView"
                                     href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
