@@ -33,12 +33,12 @@
                                                 aria-selected="true">Request List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link"
-                                                id="ClosedRequestList-tab" data-toggle="pill" href="#ClosedRequestList" role="tab"
-                                                aria-controls="ClosedRequestList" aria-selected="false">Closed Request List</a>
+                                            <a class="nav-link" id="ClosedRequestList-tab" data-toggle="pill"
+                                                href="#ClosedRequestList" role="tab" aria-controls="ClosedRequestList"
+                                                aria-selected="false">Closed Request List</a>
                                         </li>
-                                      
-    
+
+
                                     </ul>
                                 </div>
                                 <div class="card-body">
@@ -63,7 +63,7 @@
                                                                 <th>Requested Unit</th>
                                                                 <th>Needed Date</th>
                                                                 <th>Status</th>
-                    
+
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -79,7 +79,7 @@
                                                                         ->where('remain_unit', '>=', 0)
                                                                         ->sum('remain_unit');
                                                                 @endphp
-                    
+
                                                                 <tr>
                                                                     <td>{{ $key + 1 }}</td>
                                                                     <td>{{ $patientData->name }}</td>
@@ -88,41 +88,47 @@
                                                                     <td>{{ $data->blood_group }}</td>
                                                                     <td>{{ $remainingUnits }}</td>
                                                                     <td>{{ $data->requested_unit }}</td>
-                                                                    <td>{{ date('d M Y', strtotime($data->needed_date)) }}</td>
+                                                                    <td>{{ date('d M Y', strtotime($data->needed_date)) }}
+                                                                    </td>
                                                                     <td>
                                                                         {{ $data->status == 1 ? 'Accepted' : ($data->status == 2 ? 'On Hold' : ($data->status == 3 ? 'Refused' : '')) }}
                                                                     </td>
-                    
+
                                                                     <td>
-                                                                        <button type="button" class="btn btn-sm dropdown-toggle"
+                                                                        <button type="button"
+                                                                            class="btn btn-sm dropdown-toggle"
                                                                             data-toggle="dropdown">
                                                                             Action
                                                                         </button>
                                                                         <div class="dropdown-menu">
-                    
-                                                                            <a class="dropdown-item" href="{{ route('admin.manage-request.show', $data->slug) }}">
+
+                                                                            <a class="dropdown-item"
+                                                                                href="{{ route('admin.manage-request.show', $data->slug) }}">
                                                                                 <i class="fa fa-check-square"></i> Accepted
                                                                             </a>
-                                                                            
-                                                                            <a class="dropdown-item" data-toggle="modal" href="#"><i
-                                                                                    class="fa fa-lock"></i> On Hold</a>
-                                                                            <a class="dropdown-item" data-toggle="modal" href="#"><i
-                                                                                    class="     fa fa-trash"></i> Refused</a>
-                    
+
+                                                                            <a class="dropdown-item" data-toggle="modal"
+                                                                                href="#"><i class="fa fa-lock"></i> On
+                                                                                Hold</a>
+                                                                            <a class="dropdown-item" data-toggle="modal"
+                                                                                href="#"><i
+                                                                                    class="     fa fa-trash"></i>
+                                                                                Refused</a>
+
                                                                         </div>
-                    
+
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
-                    
+
                                                             <!-- Add more rows with data as needed -->
                                                         </tbody>
                                                     </table>
-                    
+
                                                 </div>
                                                 <!-- /.card-body -->
                                             </div>
-                                           
+
                                         </div>
                                         <div class="tab-pane fade" id="ClosedRequestList" role="tabpanel"
                                             aria-labelledby="custom-tabs-four-profile-tab">
@@ -138,7 +144,7 @@
                                                             <th>Requested Unit</th>
                                                             <th>Needed Date</th>
                                                             <th>Status</th>
-                
+
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -148,9 +154,9 @@
                                                                 $patientData = App\Models\admin\Patient::where('slug', $data->patient_slug)
                                                                     ->select('name', 'phone', 'address')
                                                                     ->first();
-                                                        
+
                                                             @endphp
-                
+
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td>{{ $patientData->name }}</td>
@@ -162,120 +168,123 @@
                                                                 <td>
                                                                     {{ $data->status == 1 ? 'Accepted' : ($data->status == 2 ? 'On Hold' : ($data->status == 3 ? 'Refused' : '')) }}
                                                                 </td>
-                
+
                                                                 <td>
-                                                                    <button type="button" class="btn btn-sm dropdown-toggle"
+                                                                    <button type="button"
+                                                                        class="btn btn-sm dropdown-toggle"
                                                                         data-toggle="dropdown">
                                                                         Action
                                                                     </button>
                                                                     <div class="dropdown-menu">
-                
-                                                                        <a class="dropdown-item" data-toggle="modal"
-                                                                        href="#modal-unitHistory{{ $data->slug }}">
-                                                                            <i class="fa fa-check-square"></i> Show Unit Data
-                                                                        </a>
-                                                                        
 
-                
+                                                                        <a class="dropdown-item" data-toggle="modal"
+                                                                            href="#modal-unitHistory{{ $data->slug }}">
+                                                                            <i class="fa fa-check-square"></i> Show Unit
+                                                                            Data
+                                                                        </a>
+
+
+
                                                                     </div>
-                
+
                                                                 </td>
                                                             </tr>
                                                         @endforeach
-                
+
                                                         <!-- Add more rows with data as needed -->
                                                     </tbody>
                                                 </table>
+                                                @isset($data)
+                                                    <div class="modal fade" id="modal-unitHistory{{ $data->slug }}">
+                                                        <div class="modal-dialog modal-xl">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">Unit
+                                                                        History</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
 
-                                                <div class="modal fade"
-                                                id="modal-unitHistory{{ $data->slug }}">
-                                                <div class="modal-dialog modal-xl">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Unit
-                                                                History</h4>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
+
+
+                                                                <div class="modal-body">
+
+
+                                                                    <table id="example2" class="table table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>#</th>
+                                                                                <th>Donor Name</th>
+                                                                                <th>Phone</th>
+                                                                                <th>Inventory Slug</th>
+                                                                                <th>Date</th>
+
+
+
+
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @php
+                                                                                $InvData = App\Models\admin\InventoryHistory::where('blood_request_slug', $data->slug)->get();
+                                                                            @endphp
+                                                                            @foreach ($InvData as $key => $data)
+                                                                                @php
+                                                                                    $donorData = App\Models\admin\donor::where('slug', App\Models\admin\Inventory::where('slug', $data->inventory_slug)->value('donor_slug'))
+                                                                                        ->select('name', 'phone', 'address')
+                                                                                        ->first();
+
+                                                                                @endphp
+                                                                                <tr>
+                                                                                    <td>{{ $key + 1 }}</td>
+                                                                                    <td>{{ $donorData->name }}</td>
+                                                                                    <td>{{ $donorData->phone }}</td>
+                                                                                    <td>{{ $data->inventory_slug }}</td>
+                                                                                    <td>{{ date('d M Y', strtotime($data->created_at)) }}
+                                                                                    </td>
+
+
+
+
+
+
+                                                                                </tr>
+                                                                            @endforeach
+
+                                                                            <!-- Add more rows with data as needed -->
+                                                                        </tbody>
+                                                                    </table>
+
+
+
+                                                                </div>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">Close</button>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
                                                         </div>
-
-                                                 
-
-                                                        <div class="modal-body">
-
-
-                                                            <table id="example2" class="table table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Donor Name</th>
-                                                                        <th>Phone</th>
-                                                                        <th>Inventory Slug</th>
-                                                                        <th>Date</th>
-
-
-
-                                                                       
-                                                                 
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>  
-                                                                    @php
-                                                                    $InvData = App\Models\admin\InventoryHistory::where('blood_request_slug', $data->slug) ->get();
-                                                                @endphp
-                                                                    @foreach ($InvData as $key => $data)
-                                                                       
-                                                                    @php
-                                                               $donorData = App\Models\admin\donor::where('slug', App\Models\admin\Inventory::where('slug', $data->inventory_slug)->value('donor_slug'))->select('name', 'phone', 'address')->first(); 
-
-                                                                @endphp
-                                                                        <tr>
-                                                                            <td>{{ $key + 1 }}</td>
-                                                                            <td>{{ $donorData->name }}</td>
-                                                                            <td>{{ $donorData->phone }}</td>
-                                                                            <td>{{ $data->inventory_slug }}</td>
-                                                                            <td>{{ date('d M Y', strtotime($data->created_at)) }}</td>
-
-
-
-                                                                            
-                            
-                                                                         
-                                                                        </tr>
-                                                                    @endforeach
-                            
-                                                                    <!-- Add more rows with data as needed -->
-                                                                </tbody>
-                                                            </table>
-
-
-
-                                                        </div>
-                                                        <div
-                                                            class="modal-footer justify-content-between">
-                                                            <button type="button"
-                                                                class="btn btn-default"
-                                                                data-dismiss="modal">Close</button>
-                                                           
-                                                        </div>
-
+                                                        <!-- /.modal-dialog -->
                                                     </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                
+                                                @endisset
+
+
                                             </div>
                                         </div>
-                                     
+
                                     </div>
                                 </div>
                                 <!-- /.card -->
                             </div>
                         </div>
-                    </div>   
-                 
+                    </div>
+
                     <!-- /.col-md-6 -->
                 </div>
                 <!-- /.row -->
