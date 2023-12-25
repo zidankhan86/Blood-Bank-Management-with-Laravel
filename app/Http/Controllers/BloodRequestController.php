@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\admin\Patient;
 use Illuminate\Support\Facades\Auth;
 use App\Models\frontend\BloodRequest;
+use Illuminate\Support\Facades\Validator;
 
 class BloodRequestController extends Controller
 {
@@ -31,6 +32,19 @@ class BloodRequestController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'requested_unit' => 'required|integer|min:1',
+            'note' => 'nullable|string|max:255',
+            'needed_date' => 'required|date|after_or_equal:today',
+            'blood_group' => 'required',
+
+        ]);
+        
+       toastr()->error("Failed, You are not registered");
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        
         $bloodRequest = new BloodRequest;
         $bloodRequest->patient_slug = Patient::where('user_id',Auth::user()->id)->value('slug');
         $bloodRequest->slug = Str::slug($request->blood_group);
