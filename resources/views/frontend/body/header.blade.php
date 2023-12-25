@@ -16,61 +16,27 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{url('/')}}">Home</a>
                             </li>
-                            <li class="nav-item dropdown dropdown-slide @@dashboard">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                    href="#!">Dashboard<span><i class="fa fa-angle-down"></i></span>
-                                </a>
-
-                                <!-- Dropdown list -->
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item @@dashboardPage"
-                                            href="dashboard.html">Dashboard</a></li>
-                                    <li><a class="dropdown-item @@dashboardMyAds"
-                                            href="dashboard-my-ads.html">Dashboard My Ads</a></li>
-                                    <li><a class="dropdown-item @@dashboardFavouriteAds"
-                                            href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a></li>
-                                    <li><a class="dropdown-item @@dashboardArchivedAds"
-                                            href="dashboard-archived-ads.html">Dashboard Archived Ads</a></li>
-                                    <li><a class="dropdown-item @@dashboardPendingAds"
-                                            href="dashboard-pending-ads.html">Dashboard Pending Ads</a></li>
-
-                                    <li class="dropdown dropdown-submenu dropright">
-                                        <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501"
-                                            role="button" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Sub Menu</a>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                                            <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                            <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                            
                             <li class="nav-item dropdown dropdown-slide @@listing">
+                                @auth
                                 <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    Listing <span><i class="fa fa-angle-down"></i></span>
+                                    {{auth()->user()->name}} <span><i class="fa fa-angle-down"></i></span>
                                 </a>
+                               
                                 <!-- Dropdown list -->
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item @@category" href="category.html">Ad-Gird
-                                            View</a></li>
+                                    <li><a class="dropdown-item @@category" href="">Profile</a></li>
                                     <li><a class="dropdown-item @@listView"
-                                            href="ad-list-view.html">Ad-List View</a></li>
+                                    href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Logout</a></li>
 
-                                    <li class="dropdown dropdown-submenu dropleft">
-                                        <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0201"
-                                            role="button" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Sub Menu</a>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdown0201">
-                                            <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                            <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                        </ul>
-                                    </li>
+                                    
                                 </ul>
                             </li>
+                            @endauth
                         </ul>
                         <ul class="navbar-nav ml-auto mt-10">
                             @if (Auth::guest())
