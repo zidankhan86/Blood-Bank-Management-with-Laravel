@@ -55,7 +55,7 @@ class DonorController extends Controller
         $user->name = $validatedData['name'];
         $user->user_type = 2;
         $user->email = $validatedData['email'];
-        $user->password = bcrypt('donor');
+        $user->password = bcrypt('password');
         $user->save();
 
 
