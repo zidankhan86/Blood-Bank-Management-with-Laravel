@@ -43,10 +43,10 @@ class InventoryController extends Controller
         ]);
 
         // Check if validation fails for donate_date and expire_date
-        if ($request->donate_date > date('Y-m-d') && $request->donate_date > $request->expire_date) {
-            return back()->with('error', 'Invalid dates.')->withInput();
-        }
-        try {
+        // if ($request->donate_date > date('Y-m-d') && $request->donate_date > $request->expire_date) {
+        //     return back()->with('error', 'Invalid dates.')->withInput();
+        // }
+        // try {
             // Create a new inventory record
             $inventory = new Inventory();
             $inventory->slug = Str::slug(Str::random(10));
@@ -55,18 +55,18 @@ class InventoryController extends Controller
             $inventory->donate_date = $validatedData['donate_date'];
             $inventory->expire_date = $validatedData['expire_date'];
             $inventory->donate_unit = $validatedData['donate_unit'];
-            $inventory->tramsfared_unit = 0;
+            $inventory->transferred_unit = 0;
             $inventory->remain_unit = $validatedData['donate_unit'];
 
             // Save the inventory record to the database
             $inventory->save();
 
             return back()->with('success', 'Inventory added successfully!');
-        } catch (\Illuminate\Database\QueryException $e) {
-            // Log or display detailed error messages for debugging
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     // Log or display detailed error messages for debugging
 
-            return back()->with('error', 'Failed to add inventory. Please try again.')->withInput();
-        }
+        //     return back()->with('error', 'Failed to add inventory. Please try again.')->withInput();
+        // }
     }
 
 
