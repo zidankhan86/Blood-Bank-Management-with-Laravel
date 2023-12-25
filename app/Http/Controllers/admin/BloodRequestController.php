@@ -49,11 +49,12 @@ class BloodRequestController extends Controller
 
         // Find the accepted blood request
         $bloodRequest = BloodRequest::where('slug', $bloodRequestSlug)->first();
-        
+        $blood_group = $bloodRequest->blood_group;
         if ($bloodRequest) {
             $requestedUnits = $bloodRequest->requested_unit;
-            $availableUnits = Inventory::where('blood_group', 'O-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit');
+            $availableUnits = Inventory::where('blood_group',  $blood_group)->where('expire_date', '>', now())->where('remain_unit', '>', 0)->sum('remain_unit');
             
+            if($availableUnits>$requestedUnits){
             // Find the closest expire_date and update remain_unit
             $inventoryRecords = Inventory::where('blood_group', $bloodRequest->blood_group)
                 ->where('remain_unit', '>', 0) // Ensure there are remaining units
@@ -91,6 +92,12 @@ class BloodRequestController extends Controller
         
             // Update the blood request status to 1 (accepted)
             $bloodRequest->update(['status' => 1]);
+        }
+        else{
+            return back()->with('error', 'Requested amount is larger then available.');
+
+
+        }
         } 
         return back()->with('success', 'Unit transfared successfully.');
     }
