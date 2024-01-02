@@ -36,7 +36,7 @@
                                             <th>#</th>
                                             <th>Blood Group</th>
                                             <th>Available Bag</th>
-                                            <th>Price</th>
+                                            <th>Price(BDT)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
