@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('donate_date');
             $table->date('expire_date');
             $table->Integer('donate_unit');
+            $table->Integer('price');
             $table->Integer('transferred_unit');
             $table->Integer('remain_unit');
             $table->timestamps();

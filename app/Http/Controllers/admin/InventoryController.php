@@ -40,6 +40,7 @@ class InventoryController extends Controller
             'donate_date' => 'required|date|before_or_equal:today',
             'expire_date' => 'required|date',
             'donate_unit' => 'required|integer|min:1',
+            'price' => 'required|integer|min:1',
         ]);
 
         // Check if validation fails for donate_date and expire_date
@@ -57,7 +58,7 @@ class InventoryController extends Controller
             $inventory->donate_unit = $validatedData['donate_unit'];
             $inventory->transferred_unit = 0;
             $inventory->remain_unit = $validatedData['donate_unit'];
-
+            $inventory->price = $validatedData['price'];
             // Save the inventory record to the database
             $inventory->save();
 

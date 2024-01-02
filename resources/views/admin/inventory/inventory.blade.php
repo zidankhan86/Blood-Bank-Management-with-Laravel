@@ -36,6 +36,7 @@
                                             <th>#</th>
                                             <th>Blood Group</th>
                                             <th>Available Bag</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -45,6 +46,7 @@
                                             <td>A+</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'A+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'A+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
 
                                             <td><a href='{{ route('admin.manage-inv.show', 'A+') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
@@ -54,6 +56,8 @@
                                             <td>A-</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'A-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'A-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
+
                                             <td><a href='{{ route('admin.manage-inv.show', 'A-') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -62,6 +66,8 @@
                                             <td>B+</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'B+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'B+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
+                                            
                                             <td><a href='{{ route('admin.manage-inv.show', 'B+') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -70,6 +76,7 @@
                                             <td>B-</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'B-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'B-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
                                             <td><a href='{{ route('admin.manage-inv.show', 'B-') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -78,6 +85,7 @@
                                             <td>AB+</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'AB+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'AB+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
                                             <td><a href='{{ route('admin.manage-inv.show', 'AB+') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -86,6 +94,7 @@
                                             <td>AB-</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'AB-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'AB-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
                                             <td><a href='{{ route('admin.manage-inv.show', 'AB-') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -94,6 +103,7 @@
                                             <td>O+</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'O+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'O+')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
                                             <td><a href='{{ route('admin.manage-inv.show', 'O+') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -102,6 +112,7 @@
                                             <td>O-</td>
                                             <td>{{ \App\Models\admin\Inventory::where('blood_group', 'O-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('remain_unit') }}
                                             </td>
+                                            <td>{{ \App\Models\admin\Inventory::where('blood_group', 'O-')->where('expire_date', '>', now())->where('remain_unit', '>=', 0)->sum('price') }}Tk/unit</td>
                                             <td><a href='{{ route('admin.manage-inv.show', 'O-') }}'
                                                     class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
@@ -191,7 +202,13 @@
                                     ]) !!}
                                 </div>
 
-
+                                <div class="form-group">
+                                    {!! Form::label('price', 'price') !!}
+                                    {!! Form::number('price', 10, [
+                                        'class' => 'form-control',
+                                        'min' => 1,
+                                    ]) !!}
+                                </div>
 
                             </div>
                             <div class="card-footer">
